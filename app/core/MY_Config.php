@@ -6,6 +6,24 @@ class MY_Config extends CI_Config {
 		parent::__construct();
 	}
 
+	function site_url($uri = '')
+	{
+		$url = parent::site_url($uri);
+		if ($_SERVER['SERVER_PORT'] == 443) {
+			$url = str_replace('http://', 'https://', $url);
+		}
+		return $url;
+	}
+
+	function base_url($uri = '')
+	{
+		$url = parent::base_url($uri);
+		if ($_SERVER['SERVER_PORT'] == 443) {
+			$url = str_replace('http://', 'https://', $url);
+		}
+		return $url;
+	}
+
 	function save($filename)
 	{
 		$out = "<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');".
