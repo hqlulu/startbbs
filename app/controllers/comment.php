@@ -18,6 +18,7 @@ class Comment extends SB_Controller
 		$this->uid = $this->session->userdata('uid');
 		$this->config->load('topicset');
 		$this->load->library('form_validation');
+		$this->load->config('qiniu');
 	}
 
 	public function add_comment ()
